@@ -6,3 +6,16 @@ body {
 .card-header {
   background-color: #ffffff !important;
 }
+.no-std {
+  color: rgb(10, 85, 198);
+}
+.fa-ban {
+  font-size: 40px;
+  color: rgb(11, 94, 215);
+  margin-bottom: 20px;
+}
+.fa-users {
+  margin-top: 40px;
+  font-size: 60px;
+  color: rgb(11, 94, 215);
+}

@@ -8,25 +8,57 @@
     </div>
   </div>
 
+  @if(studentList.length !==0){
   <div class="row pt-3">
-    <div class="col-3">
+    @for(item of studentList ; track $index){
+    <div class="col-3 mt-3">
       <div class="card">
         <div class="card-header">
           <div class="row">
-            <div class="col-6">Student Name</div>
-            <div class="col-6 text-end">Mobile Number</div>
+            <div class="col-6">{{item.name}}</div>
+            <div class="col-6 text-end">{{item.mobileNo}}</div>
           </div>
         </div>
         <div class="card-body">
-          <p>City | State | Code</p>
-          <p>Address</p>
+          <p>{{item.city}} | {{item.state}} | {{item.code}}</p>
+          <p>{{item.address}}</p>
         </div>
         <div class="card-footer text-center">
-          <p>Email</p>
+          <div class="row">
+            <div class="col-12">
+              <p>{{item.email}}</p>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <button class="btn btn-sm btn-secondary" (click)="onEdit(item)">Edit</button>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-sm btn-danger" (click)="onDelete(item)">Delete</button>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
+    }
+
+
+
   </div>
+  }
+  @else {
+  <div class="row">
+    <div class="col-12 p-4 mt-5 text-center text-dark">
+      <i class="fa-solid fa-ban"></i>
+      <h2 class="no-std">No Record Found</h2>
+      <h4 class="no-std">Create New Student</h4>
+      <i class="fa-solid fa-users"></i>
+    </div>
+  </div>
+  }
+
+
 
 
 </div>
@@ -91,7 +123,14 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="closeModel()">Close</button>
+
+        @if (studentObj.id==0) {
         <button type="button" class="btn btn-primary" (click)="SaveStudent()">Save student</button>
+        }
+        @else {
+        <button type="button" class="btn btn-success" (click)="updateStudent()">Update student</button>
+        }
+
       </div>
 
     </div>
